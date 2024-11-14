@@ -1,1 +1,1 @@
-[LiveDemo](https://github.com/sivaxreddy/animation/blob/main/index.html)
+[LiveDemo(https://sivaxreddy.github.io/animation/)
