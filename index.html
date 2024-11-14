@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>High-Res Animation</title>
-    <script src="sketch.js"></script>
-    <script src="p5.js"></script>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Pattern Animation</title>
+  <style>
+    body, html {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #000; /* Pure black background */
+    }
+    canvas {
+      border-radius: 8px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
+  <canvas id="patternCanvas" width="400" height="800"></canvas>
+
+  <script>
+    const canvas = document.getElementById('patternCanvas');
+    const ctx = canvas.getContext('2d');
+    let t = 0;
+    const w = 400;
+    const h = 800;
+    const scale = w / 400;
+
+    const a = (x, y) => {
+      const k = x / 8 - 25 * scale;
+      const e = y / 8 - 25 * scale;
+      const d = Math.sqrt(k * k + e * e) ** 2 / (99 * scale);
+      const q = x / 3 + k * 0.5 / Math.cos(y * 5 / scale) * Math.sin(d * d - t);
+      const c = d / 2 - t / 8;
+      return [
+        q * Math.sin(c) + e * Math.sin(d + k - t) + w / 2,
+        (q + y / 8 + d * 9) * Math.cos(c) + h / 2
+      ];
+    };
+
+    function draw() {
+      ctx.fillStyle = 'rgb(0, 0, 0)'; // Pure black fill
+      ctx.fillRect(0, 0, w, h);
+      
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      for (let y = 99 * scale; y < 300 * scale; y += 5) {
+        for (let x = 99 * scale; x < 300 * scale; x += 1) {
+          const [px, py] = a(x, y);
+          ctx.fillRect(px, py, 1, 1);
+        }
+      }
+      
+      t += Math.PI / 120;
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
 </body>
 </html>
