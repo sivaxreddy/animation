@@ -10,28 +10,32 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       min-height: 100vh;
       margin: 0;
       background-color: #000; /* Pure black background */
       overflow: hidden; /* This prevents scrolling */
-
     }
     canvas {
-      
       border-radius: 8px;
       display: block;
     }
     #sourceLink {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    color: rgba(255, 255, 255, 0.7); /* Light white color */
-    font-size: 12px; /* Small enough to fit all screens */
-    text-decoration: none;
-  }
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      color: rgba(255, 255, 255, 0.7); /* Light white color */
+      font-size: 12px; /* Small enough to fit all screens */
+      text-decoration: none;
+    }
+    header {
+      color: white;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
+  <header>Math Pattern Animation</header>
   <canvas id="patternCanvas" width="400" height="800"></canvas>
 
   <script>
@@ -72,7 +76,6 @@
 
     draw();
   </script>
-    <a href="https://x.com/yuruyurau/status/1855984865080234183?t=Tayvjdf-YSqW8Pa0WA4x9w&s=35" id="sourceLink">source</a>
-
+  <a href="https://x.com/yuruyurau/status/1855984865080234183?t=Tayvjdf-YSqW8Pa0WA4x9w&s=35" id="sourceLink">source</a>
 </body>
 </html>
